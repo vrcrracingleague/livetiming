@@ -119,7 +119,7 @@ tr:nth-child(odd) {
 }
 
 tr:hover {
-  background-color: #333333; /* Colore di evidenza per il passaggio del mouse */
+  background-color: #87cefa; /* Colore di evidenza per il passaggio del mouse */
 }
 
 img.logo-auto {
