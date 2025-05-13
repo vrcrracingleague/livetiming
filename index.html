@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Live Timing</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="session-bar">
+    <span id="statoSessione"><strong>LOADING</strong> - Loading...</span>
+  </div>
+
+  <div class="header-bar">
+    LIVE CLASSIFICATION
+    <span id="flagStatus" class="status-flag">Loading...</span>
+  </div>
+
+  <div class="track-info">
+    <span id="circuito">Circuit: Loading...</span>
+  </div>
+
+  <div class="bestlap-info">
+    <span>Session Best Lap: <span id="bestLapSession">--:--</span></span>
+    <span>By: <span id="pilotaBestLap">---</span></span>
+  </div>
+
+  <h2>Live Timing</h2>
+  <table id="table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Pilota</th>
+        <th>IN/OUT</th>
+        <th>Sect.</th>
+        <th>Last</th>
+        <th>S1</th>
+        <th>S2</th>
+        <th>S3</th>
+        <th>Laps</th>
+        <th>Best</th>
+        <th>Team</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <script src="script.js"></script>
+</body>
+</html>

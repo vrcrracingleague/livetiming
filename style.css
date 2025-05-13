@@ -1,0 +1,172 @@
+body {
+  background-color: #000000;
+  color: #ffffff;
+  font-family: 'Orbitron', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.session-bar {
+  background-color: #111111;
+  color: #ffffff;
+  padding: 6px 20px;
+  font-size: 16px;
+}
+
+.session-bar strong {
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.header-bar {
+  background-color: #a32121;
+  color: #ffffff;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.status-flag {
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.status-green {
+  background-color: #008000;
+}
+
+.status-checkered {
+  background-color: #f0f0f0;
+  color: #000000;
+  background-size: 10px 10px;
+  background-position: 0 0, 5px 5px;
+}
+
+.track-info {
+  background-color: #111111;
+  padding: 6px 20px;
+  font-size: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.bestlap-info {
+  background-color: #2a2a2a;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+}
+
+h2 {
+  text-align: center;
+  margin: 20px 0 10px;
+  font-size: 20px;
+}
+
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 4 4px; /* Aggiungi spazio tra le celle */
+  font-size: 13px;
+}
+
+th {
+  background-color: #444444; /* Un grigio più chiaro per le intestazioni */
+  color: #ffffff;
+  font-size: 13px;
+  text-transform: uppercase;
+  font-weight: normal; /* Testo normale (non in grassetto) */
+  min-height: 40px; /* Aggiungi questa riga per impostare un'altezza minima */
+  padding: 8px 6px; /* Puoi mantenere o modificare il padding come preferisci */
+}
+
+td {
+  color: #ffffff; /* Testo bianco */
+  padding: 8px 6px;
+  text-align: center;
+  transition: background-color 1.5s ease-in-out;
+}
+
+td:first-child,
+td:nth-child(5) {
+  background-color: #888888; /* Grigio chiaro */
+  color: #000000; /* Testo nero */
+}
+
+td:nth-child(6),
+td:nth-child(7),
+td:nth-child(8) {
+  background-color: #666666; /* leggermente più scuro */
+  color: #000000; /* testo nero */
+}
+
+td:nth-child(2), th:nth-child(2),
+td:nth-child(11), th:nth-child(11) {
+  text-align: left;
+}
+
+tr:nth-child(even) {
+  background-color: #2c2c2c; /* Righe più scure per i piloti */
+}
+
+tr:nth-child(odd) {
+  background-color: #121212; /* Righe più scure per i piloti */
+}
+
+tr:hover {
+  background-color: #333333; /* Colore di evidenza per il passaggio del mouse */
+}
+
+img.logo-auto {
+  height: 18px;
+  vertical-align: middle;
+  margin-left: 6px;
+}
+
+.best-lap-highlight {
+  background-color: #c0392b !important;
+  color: #ffffff;
+  font-weight: bold;
+}
+
+.nome {
+  font-weight: normal;
+  text-transform: capitalize;
+}
+
+.cognome {
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.row-moving-up, .row-moving-down {
+  animation: moveRow 1s ease;
+}
+
+@keyframes moveRow {
+  from {
+    transform: translateY(50px);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .header-bar, .track-info, .bestlap-info {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+/* Impedisci l'andare a capo nelle colonne PILOTA, IN/OUT e TEAM */
+td:nth-child(2), /* PILOTA */
+td:nth-child(3), /* IN/OUT */
+td:nth-child(11) /* TEAM */ {
+  white-space: nowrap;
+}
