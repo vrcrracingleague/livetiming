@@ -181,7 +181,7 @@ td:nth-child(3), th:nth-child(3) {
 /* Logo auto centrato e dimensionato */
 img.logo-auto {
   max-height: 24px;
-  max-width: 48px;
+  max-width: 32px;
   object-fit: contain;
   display: block;
   margin: 0 auto;
