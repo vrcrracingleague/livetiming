@@ -109,7 +109,8 @@ function renderTable(data) {
 
     const cells = [
       row["Race Number"] || "",
-      `<span class="nome">${nomeStr}</span> <span class="cognome">${cognome}</span> ${logoImg}`,
+      `<span class="nome">${nomeStr}</span> <span class="cognome">${cognome}</span>`,
+      `<span class="car-logo">${logoImg}</span>`,  // Aggiungi logo auto nella colonna "Car"
       row["Stato Pilota"] || "",
       row["Progresso Giro"] || "",
       row["LastLap"] || "",
@@ -123,12 +124,12 @@ function renderTable(data) {
 
     cells.forEach((cell, i) => {
       const td = document.createElement("td");
-      if (i === 4 && isBest) td.classList.add("best-lap-highlight");
+      if (i === 5 && isBest) td.classList.add("best-lap-highlight");
       td.innerHTML = cell;
       tr.appendChild(td);
     });
 
-    const prevLastLap = previousData[index]?.[4] || "";
+    const prevLastLap = previousData[index]?.[5] || "";
     const currentLastLap = row["LastLap"] || "";
 
     if (prevLastLap !== currentLastLap) {
@@ -153,24 +154,31 @@ function renderTable(data) {
     tbody.appendChild(tr);
   });
 
-  previousData = data.map(row => {
-    const [nome, ...cognomeParts] = (row["Nome"] || " ").split(" ");
-    const nomeStr = nome.charAt(0).toUpperCase() + nome.slice(1).toLowerCase();
-    const cognome = cognomeParts.join(" ").toUpperCase();
-    return [
-      row["Race Number"] || "",
-      `<span class="nome">${nomeStr}</span> <span class="cognome">${cognome}</span>`,
-      row["Stato Pilota"] || "",
-      row["Progresso Giro"] || "",
-      row["LastLap"] || "",
-      row["Split S1"] || "",
-      row["Split S2"] || "",
-      row["Split S3"] || "",
-      row["Lap Count"] || "",
-      row["BestLap"] || "",
-      row["Team"] || ""
-    ];
-  });
+previousData = data.map(row => {
+  const [nome, ...cognomeParts] = (row["Nome"] || " ").split(" ");
+  const nomeStr = nome.charAt(0).toUpperCase() + nome.slice(1).toLowerCase();
+  const cognome = cognomeParts.join(" ").toUpperCase();
+
+  // Aggiungi il logo anche qui per `previousData`
+  const carModel = row["CarModel"];
+  const logoUrl = carLogos[carModel] || "";
+  const logoImg = logoUrl ? `<img src="${logoUrl}" alt="logo" class="logo-auto" />` : "";
+
+  return [
+    row["Race Number"] || "",
+    `<span class="nome">${nomeStr}</span> <span class="cognome">${cognome}</span>`,
+    `<span class="car-logo">${logoImg}</span>`,  // Colonna car con il logo
+    row["Stato Pilota"] || "",
+    row["Progresso Giro"] || "",
+    row["LastLap"] || "",
+    row["Split S1"] || "",
+    row["Split S2"] || "",
+    row["Split S3"] || "",
+    row["Lap Count"] || "",
+    row["BestLap"] || "",
+    row["Team"] || ""
+  ];
+});
 }
 
 loadData();
