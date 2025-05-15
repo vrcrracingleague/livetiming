@@ -174,7 +174,7 @@ td:nth-child(12) /* TEAM */ {
 
 /* Colonna CAR (ora è la terza) */
 td:nth-child(3), th:nth-child(3) {
-  width: 70px;
+  width: 50px;
   text-align: center;
 }
 
