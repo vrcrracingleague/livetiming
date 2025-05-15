@@ -18,6 +18,22 @@ const carLogos = {
   36: "https://i.postimg.cc/ncjPS77c/Ford-Motor-Company-Logo.png"                    // Ford Mustang
 };
 
+function getColorForCar(carModel) {
+  const colorMap = {
+    20: "#006F62", // Aston Martin
+    26: "#0072CE", // BMW
+    31: "#A5A5A5", // Audi
+    32: "#DC0000", // Ferrari
+    33: "#FEC601", // Lamborghini
+    34: "#30b528", // Porsche
+    35: "#FF8700", // McLaren
+     6: "#ffffff", // Nissan
+     8: "#5D3A00", // Bentley
+    36: "#00274D"  // Ford
+  };
+  return colorMap[carModel] || "#888888";
+}
+
 function loadData() {
   fetch(url)
     .then(response => response.json())
@@ -90,6 +106,7 @@ function renderTable(data) {
   const tbody = document.querySelector("#table tbody");
   const bestLapSession = data[0]["Best Lap Session"];
 
+  // Svuota la tabella
   tbody.querySelectorAll("tr").forEach(tr => tr.remove());
 
   data.forEach((row, index) => {
@@ -102,15 +119,15 @@ function renderTable(data) {
     const nomeStr = nome.charAt(0).toUpperCase() + nome.slice(1).toLowerCase();
     const cognome = cognomeParts.join(" ").toUpperCase();
 
-    // 🔧 Aggiunta logo
-    const carModel = row["CarModel"];
+    // Logo auto
+    const carModel = Number(row["CarModel"]);
     const logoUrl = carLogos[carModel] || "";
     const logoImg = logoUrl ? `<img src="${logoUrl}" alt="logo" class="logo-auto" />` : "";
 
     const cells = [
       row["Race Number"] || "",
       `<span class="nome">${nomeStr}</span> <span class="cognome">${cognome}</span>`,
-      `<span class="car-logo">${logoImg}</span>`,  // Aggiungi logo auto nella colonna "Car"
+      `<span class="car-logo">${logoImg}</span>`,
       row["Stato Pilota"] || "",
       row["Progresso Giro"] || "",
       row["LastLap"] || "",
@@ -122,13 +139,22 @@ function renderTable(data) {
       row["Team"] || ""
     ];
 
-    cells.forEach((cell, i) => {
-      const td = document.createElement("td");
-      if (i === 5 && isBest) td.classList.add("best-lap-highlight");
-      td.innerHTML = cell;
-      tr.appendChild(td);
-    });
+cells.forEach((cell, i) => {
+  const td = document.createElement("td");
+if (i === 0) {
+  const barColor = getColorForCar(carModel);
+  td.innerHTML = `<div class="race-number-bar" style="--bar-color: ${barColor}">${cell}</div>`;
+}
 
+  else {
+    td.innerHTML = cell;
+  }
+  if (i === 5 && isBest) td.classList.add("best-lap-highlight");
+  tr.appendChild(td);
+});
+
+
+    // Evidenzia il cambiamento di LastLap con flash giallo
     const prevLastLap = previousData[index]?.[5] || "";
     const currentLastLap = row["LastLap"] || "";
 
@@ -137,7 +163,7 @@ function renderTable(data) {
         const originalBg = getComputedStyle(td).backgroundColor;
 
         td.style.transition = 'background-color 1.5s ease-in-out';
-        td.style.backgroundColor = '#ffff00'; // Flash giallo
+        td.style.backgroundColor = '#ffff00'; // flash giallo
 
         requestAnimationFrame(() => {
           requestAnimationFrame(() => {
@@ -147,39 +173,44 @@ function renderTable(data) {
       });
     }
 
-    if (previousData[index] && previousData[index][0] !== row["Race Number"]) {
-      tr.classList.add(index > previousData.findIndex(d => d[0] === row["Race Number"]) ? 'row-moving-down' : 'row-moving-up');
+    // MOVIMENTO RIGHE (come prima)
+    if (previousData.length > 0) {
+      const prevIndex = previousData.findIndex(d => d[0] === row["Race Number"]);
+      if (prevIndex !== -1 && prevIndex !== index) {
+        tr.classList.add(prevIndex > index ? 'row-moving-up' : 'row-moving-down');
+      }
     }
 
     tbody.appendChild(tr);
   });
 
-previousData = data.map(row => {
-  const [nome, ...cognomeParts] = (row["Nome"] || " ").split(" ");
-  const nomeStr = nome.charAt(0).toUpperCase() + nome.slice(1).toLowerCase();
-  const cognome = cognomeParts.join(" ").toUpperCase();
+  // Aggiorna previousData con la nuova snapshot
+  previousData = data.map(row => {
+    const [nome, ...cognomeParts] = (row["Nome"] || " ").split(" ");
+    const nomeStr = nome.charAt(0).toUpperCase() + nome.slice(1).toLowerCase();
+    const cognome = cognomeParts.join(" ").toUpperCase();
 
-  // Aggiungi il logo anche qui per `previousData`
-  const carModel = row["CarModel"];
-  const logoUrl = carLogos[carModel] || "";
-  const logoImg = logoUrl ? `<img src="${logoUrl}" alt="logo" class="logo-auto" />` : "";
+    const carModel = row["CarModel"];
+    const logoUrl = carLogos[carModel] || "";
+    const logoImg = logoUrl ? `<img src="${logoUrl}" alt="logo" class="logo-auto" />` : "";
 
-  return [
-    row["Race Number"] || "",
-    `<span class="nome">${nomeStr}</span> <span class="cognome">${cognome}</span>`,
-    `<span class="car-logo">${logoImg}</span>`,  // Colonna car con il logo
-    row["Stato Pilota"] || "",
-    row["Progresso Giro"] || "",
-    row["LastLap"] || "",
-    row["Split S1"] || "",
-    row["Split S2"] || "",
-    row["Split S3"] || "",
-    row["Lap Count"] || "",
-    row["BestLap"] || "",
-    row["Team"] || ""
-  ];
-});
+    return [
+      row["Race Number"] || "",
+      `<span class="nome">${nomeStr}</span> <span class="cognome">${cognome}</span>`,
+      `<span class="car-logo">${logoImg}</span>`,
+      row["Stato Pilota"] || "",
+      row["Progresso Giro"] || "",
+      row["LastLap"] || "",
+      row["Split S1"] || "",
+      row["Split S2"] || "",
+      row["Split S3"] || "",
+      row["Lap Count"] || "",
+      row["BestLap"] || "",
+      row["Team"] || ""
+    ];
+  });
 }
+
 
 loadData();
 setInterval(loadData, 10000);
