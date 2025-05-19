@@ -6,16 +6,16 @@ let lastJsonTime = null;
 
 // 🔧 LOGHI PER CARMODEL
 const carLogos = {
-  20: "https://i.postimg.cc/nhtMC4GX/Logo-della-Aston-Martin-svg.png",               // Aston Martin
-  26: "https://i.postimg.cc/nrRfKt6R/BMW-svg.png",                                   // BMW M4
-  31: "https://i.postimg.cc/x8MrB7Wx/Audi-logo-detail-svg.png",                      // Audi R8 LMS Evo II
-  32: "https://i.postimg.cc/Yqk7F2ch/ferrari.png",                                   // Ferrari 296
-  33: "https://i.postimg.cc/0NxXNB4b/lambo.png",                                     // Lamborghini Huracan
-  34: "https://i.postimg.cc/FHXDP6ND/Logo-della-Porsche-svg.png",                    // Porsche 992
-  35: "https://i.postimg.cc/3JWKYg6Y/365px-Mc-Laren-Automotive-2021-allmode.png",    // McLaren
-   6: "https://i.postimg.cc/yN3t52qM/nissan.png",                                    // Nissan
-   8: "https://i.postimg.cc/W1RzFcN3/Bentley-Logo-wine.png",                         // Bently
-  36: "https://i.postimg.cc/ncjPS77c/Ford-Motor-Company-Logo.png"                    // Ford Mustang
+  20: "https://i.postimg.cc/nhtMC4GX/Logo-della-Aston-Martin-svg.png",            // Aston Martin
+  26: "https://i.postimg.cc/nrRfKt6R/BMW-svg.png",                                // BMW M4
+  31: "https://i.postimg.cc/x8MrB7Wx/Audi-logo-detail-svg.png",                   // Audi R8 LMS Evo II
+  32: "https://i.postimg.cc/Yqk7F2ch/ferrari.png",                               // Ferrari 296
+  33: "https://i.postimg.cc/0NxXNB4b/lambo.png",                                 // Lamborghini Huracan
+  34: "https://i.postimg.cc/FHXDP6ND/Logo-della-Porsche-svg.png",                // Porsche 992
+  35: "https://i.postimg.cc/3JWKYg6Y/365px-Mc-Laren-Automotive-2021-allmode.png", // McLaren
+   6: "https://i.postimg.cc/yN3t52qM/nissan.png",                                // Nissan
+   8: "https://i.postimg.cc/W1RzFcN3/Bentley-Logo-wine.png",                     // Bentley
+  36: "https://i.postimg.cc/ncjPS77c/Ford-Motor-Company-Logo.png"                // Ford Mustang
 };
 
 function getColorForCar(carModel) {
@@ -139,20 +139,34 @@ function renderTable(data) {
       row["Team"] || ""
     ];
 
-cells.forEach((cell, i) => {
-  const td = document.createElement("td");
-if (i === 0) {
-  const barColor = getColorForCar(carModel);
-  td.innerHTML = `<div class="race-number-bar" style="--bar-color: ${barColor}">${cell}</div>`;
-}
+    cells.forEach((cell, i) => {
+      const td = document.createElement("td");
 
-  else {
-    td.innerHTML = cell;
-  }
-  if (i === 5 && isBest) td.classList.add("best-lap-highlight");
-  tr.appendChild(td);
-});
+      if (i === 0) {
+        const barColor = getColorForCar(carModel);
+        td.innerHTML = `<div class="race-number-bar" style="--bar-color: ${barColor}">${cell}</div>`;
+      } else {
+        td.innerHTML = cell;
+      }
 
+      // Logica evidenziazione LastLap
+      if (i === 5) {
+        const bestLap = row["BestLap"];
+        const lastLap = row["LastLap"];
+
+        const isValidTime = time => typeof time === "string" && time.trim() !== "" && time.includes(":");
+
+        if (isValidTime(lastLap)) {
+          if (lastLap === bestLapSession) {
+            td.classList.add("best-lap-highlight"); // rosso
+          } else if (lastLap === bestLap && isValidTime(bestLap)) {
+            td.classList.add("personal-best-highlight"); // verde
+          }
+        }
+      }
+
+      tr.appendChild(td);
+    });
 
     // Evidenzia il cambiamento di LastLap con flash giallo
     const prevLastLap = previousData[index]?.[5] || "";
@@ -210,7 +224,6 @@ if (i === 0) {
     ];
   });
 }
-
 
 loadData();
 setInterval(loadData, 10000);
