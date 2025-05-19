@@ -214,3 +214,22 @@ if (i === 0) {
 
 loadData();
 setInterval(loadData, 10000);
+
+window.addEventListener('DOMContentLoaded', () => {
+  const scrollContainer = document.getElementById('scrollContainer');
+  const shadowLeft = document.getElementById('shadowLeft');
+  const shadowRight = document.getElementById('shadowRight');
+
+  function updateShadows() {
+    const scrollLeft = scrollContainer.scrollLeft;
+    const scrollWidth = scrollContainer.scrollWidth;
+    const clientWidth = scrollContainer.clientWidth;
+
+    shadowLeft.style.display = scrollLeft > 0 ? 'block' : 'none';
+    shadowRight.style.display = scrollLeft + clientWidth < scrollWidth - 1 ? 'block' : 'none';
+  }
+
+  scrollContainer.addEventListener('scroll', updateShadows);
+  window.addEventListener('resize', updateShadows);
+  updateShadows();
+});
