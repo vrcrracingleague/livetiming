@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Live Timing</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div class="session-bar">
@@ -27,25 +27,34 @@
   </div>
 
   <h2>Live Timing</h2>
-  <table id="table">
-    <thead>
-      <tr>
-        <th>#</th>
-        <th>Pilota</th>
-        <th class="car-col">Car</th>
-        <th>IN/OUT</th>
-        <th>Sect.</th>
-        <th>Last</th>
-        <th>S1</th>
-        <th>S2</th>
-        <th>S3</th>
-        <th>Laps</th>
-        <th>Best</th>
-        <th>Team</th>
-      </tr>
-    </thead>
-    <tbody></tbody>
-  </table>
+
+  <!-- ✅ Wrapper per scroll orizzontale -->
+<div class="table-wrapper">
+  <div class="shadow-left" id="shadowLeft"></div>
+  <div class="shadow-right" id="shadowRight"></div>
+
+  <div class="scroll-container" id="scrollContainer">
+    <table id="table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Pilota</th>
+          <th class="car-col">Car</th>
+          <th>IN/OUT</th>
+          <th>Sect.</th>
+          <th>Last</th>
+          <th>S1</th>
+          <th>S2</th>
+          <th>S3</th>
+          <th>Laps</th>
+          <th>Best</th>
+          <th>Team</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+</div>
 
   <script src="script.js"></script>
 </body>
