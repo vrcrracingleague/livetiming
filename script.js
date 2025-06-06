@@ -15,7 +15,7 @@ const carLogos = {
   35: "https://i.postimg.cc/3JWKYg6Y/365px-Mc-Laren-Automotive-2021-allmode.png", // McLaren
    6: "https://i.postimg.cc/yN3t52qM/nissan.png",                                // Nissan
    8: "https://i.postimg.cc/W1RzFcN3/Bentley-Logo-wine.png",                     // Bentley
-  36: "https://i.postimg.cc/ncjPS77c/Ford-Motor-Company-Logo.png"                // Ford Mustang
+  36: "https://i.postimg.cc/ncjPS77c/Ford-Motor-Company-Logo.png",               // Ford Mustang
   21: "https://i.postimg.cc/wTDYT37W/honda-PNG102932.png"                        // Honda
 };
 
@@ -30,7 +30,8 @@ function getColorForCar(carModel) {
     35: "#FF8700", // McLaren
      6: "#ffffff", // Nissan
      8: "#5D3A00", // Bentley
-    36: "#00274D"  // Ford
+    36: "#00274D", // Ford
+    21: "#E60026" // Honda
   };
   return colorMap[carModel] || "#888888";
 }
