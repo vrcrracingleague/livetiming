@@ -14,6 +14,7 @@
     OneSignalDeferred.push(async function(OneSignal) {
       await OneSignal.init({
         appId: "4a361464-323b-4860-9dc9-0d6fdb03ddce",
+        path: "/livetiming/", // 👈 Corretto: ora cerca i worker nel path giusto
       });
     });
   </script>
