@@ -6,6 +6,17 @@
   <title>Live Timing</title>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="style.css" />
+
+  <!-- 🔔 OneSignal Push Notifications -->
+  <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+  <script>
+    window.OneSignalDeferred = window.OneSignalDeferred || [];
+    OneSignalDeferred.push(async function(OneSignal) {
+      await OneSignal.init({
+        appId: "4a361464-323b-4860-9dc9-0d6fdb03ddce",
+      });
+    });
+  </script>
 </head>
 <body>
   <div class="session-bar">
@@ -29,32 +40,32 @@
   <h2>Live Timing</h2>
 
   <!-- ✅ Wrapper per scroll orizzontale -->
-<div class="table-wrapper">
-  <div class="shadow-left" id="shadowLeft"></div>
-  <div class="shadow-right" id="shadowRight"></div>
+  <div class="table-wrapper">
+    <div class="shadow-left" id="shadowLeft"></div>
+    <div class="shadow-right" id="shadowRight"></div>
 
-  <div class="scroll-container" id="scrollContainer">
-    <table id="table">
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>Pilota</th>
-          <th class="car-col">Car</th>
-          <th>IN/OUT</th>
-          <th>Sect.</th>
-          <th>Last</th>
-          <th>S1</th>
-          <th>S2</th>
-          <th>S3</th>
-          <th>Laps</th>
-          <th>Best</th>
-          <th>Team</th>
-        </tr>
-      </thead>
-      <tbody></tbody>
-    </table>
+    <div class="scroll-container" id="scrollContainer">
+      <table id="table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Pilota</th>
+            <th class="car-col">Car</th>
+            <th>IN/OUT</th>
+            <th>Sect.</th>
+            <th>Last</th>
+            <th>S1</th>
+            <th>S2</th>
+            <th>S3</th>
+            <th>Laps</th>
+            <th>Best</th>
+            <th>Team</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
   </div>
-</div>
 
   <script src="script.js"></script>
 </body>
