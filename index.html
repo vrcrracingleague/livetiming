@@ -10,15 +10,12 @@
   <!-- 🔔 OneSignal Push Notifications -->
   <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
   <script>
-    window.OneSignalDeferred = window.OneSignalDeferred || [];
-    OneSignalDeferred.push(async function(OneSignal) {
-      await OneSignal.init({
-        appId: "4a361464-323b-4860-9dc9-0d6fdb03ddce",
-        path: "/livetiming/",
-        serviceWorkerPath: "/livetiming/OneSignalSDKWorker.js",
-        serviceWorkerUpdaterPath: "/livetiming/OneSignalSDKUpdaterWorker.js",
-      });
+  window.OneSignalDeferred = window.OneSignalDeferred || [];
+  OneSignalDeferred.push(async function(OneSignal) {
+    await OneSignal.init({
+      appId: "4a361464-323b-4860-9dc9-0d6fdb03ddce",
     });
+  });
   </script>
 </head>
 <body>
