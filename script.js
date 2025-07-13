@@ -16,6 +16,7 @@ const carLogos = {
    6: "https://i.postimg.cc/yN3t52qM/nissan.png",                                // Nissan
    8: "https://i.postimg.cc/W1RzFcN3/Bentley-Logo-wine.png",                     // Bentley
   36: "https://i.postimg.cc/ncjPS77c/Ford-Motor-Company-Logo.png",               // Ford Mustang
+  25: "https://i.postimg.cc/6qZ1bmDW/Mercedes-Benz-Logo.png",                    // AMG
   21: "https://i.postimg.cc/wTDYT37W/honda-PNG102932.png"                        // Honda
 };
 
@@ -31,6 +32,7 @@ function getColorForCar(carModel) {
      6: "#ffffff", // Nissan
      8: "#5D3A00", // Bentley
     36: "#00274D", // Ford
+    25: "#335A38", // AMG
     21: "#E60026" // Honda
   };
   return colorMap[carModel] || "#888888";
