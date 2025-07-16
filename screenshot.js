@@ -16,7 +16,7 @@ const puppeteer = require('puppeteer');
   await page.setViewport({ width: 1280, height: 720 });
 
   // Aspetta 5 secondi per far caricare i dati live
-  await page.waitForTimeout(5000);
+  await page.waitForTimeout(10000);
 
   await page.screenshot({
     path: 'livetiming.jpg',
