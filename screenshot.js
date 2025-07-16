@@ -7,10 +7,10 @@ const puppeteer = require('puppeteer');
   });
 
   const page = await browser.newPage();
-  await page.goto('https://vrcrracingleague.github.io/', {
-    waitUntil: 'networkidle2',
-    timeout: 0,
-  });
+await page.goto('https://vrcrracingleague.github.io/livetiming/', {
+  waitUntil: 'networkidle2',
+  timeout: 0,
+});
 
   await page.setViewport({ width: 1280, height: 720 });
 
