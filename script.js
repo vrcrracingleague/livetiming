@@ -34,7 +34,7 @@ function getColorForCar(carModel) {
      8: "#5D3A00", // Bentley
     36: "#00274D", // Ford
     25: "#335A38", // AMG
-    15: "#000000", // Lexus
+    15: "#0bdb8f", // Lexus
     21: "#E60026"  // Honda
   };
   return colorMap[carModel] || "#888888";
