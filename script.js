@@ -9,16 +9,16 @@ const carLogos = {
   20: "https://i.postimg.cc/nhtMC4GX/Logo-della-Aston-Martin-svg.png",            // Aston Martin
   26: "https://i.postimg.cc/nrRfKt6R/BMW-svg.png",                                // BMW M4
   31: "https://i.postimg.cc/x8MrB7Wx/Audi-logo-detail-svg.png",                   // Audi R8 LMS Evo II
-  32: "https://i.postimg.cc/Yqk7F2ch/ferrari.png",                               // Ferrari 296
-  33: "https://i.postimg.cc/0NxXNB4b/lambo.png",                                 // Lamborghini Huracan
-  34: "https://i.postimg.cc/FHXDP6ND/Logo-della-Porsche-svg.png",                // Porsche 992
+  32: "https://i.postimg.cc/Yqk7F2ch/ferrari.png",                                // Ferrari 296
+  33: "https://i.postimg.cc/0NxXNB4b/lambo.png",                                  // Lamborghini Huracan
+  34: "https://i.postimg.cc/FHXDP6ND/Logo-della-Porsche-svg.png",                 // Porsche 992
   35: "https://i.postimg.cc/3JWKYg6Y/365px-Mc-Laren-Automotive-2021-allmode.png", // McLaren
-   6: "https://i.postimg.cc/yN3t52qM/nissan.png",                                // Nissan
-   8: "https://i.postimg.cc/W1RzFcN3/Bentley-Logo-wine.png",                     // Bentley
-  36: "https://i.postimg.cc/ncjPS77c/Ford-Motor-Company-Logo.png",               // Ford Mustang
-  25: "https://i.postimg.cc/6qZ1bmDW/Mercedes-Benz-Logo.png",                    // AMG
-  15: "https://i.postimg.cc/PfBZ8vt5/lexus.png",                                 // Lexus
-  21: "https://i.postimg.cc/wTDYT37W/honda-PNG102932.png"                        // Honda
+   6: "https://i.postimg.cc/yN3t52qM/nissan.png",                                 // Nissan
+   8: "https://i.postimg.cc/W1RzFcN3/Bentley-Logo-wine.png",                      // Bentley
+  36: "https://i.postimg.cc/ncjPS77c/Ford-Motor-Company-Logo.png",                // Ford Mustang
+  25: "https://i.postimg.cc/6qZ1bmDW/Mercedes-Benz-Logo.png",                     // AMG
+  15: "https://i.postimg.cc/PfBZ8vt5/lexus.png",                                  // Lexus
+  21: "https://i.postimg.cc/wTDYT37W/honda-PNG102932.png"                         // Honda
 };
 
 function getColorForCar(carModel) {
